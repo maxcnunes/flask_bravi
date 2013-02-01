@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+     <head>
+	<title>{% block title %}Flask - Bravi{% endblock %}</title>
+	<link rel="stylesheet" href="/static/css/main.css" />
+	{% block css %}{% endblock %}
+	{% block script %}{% endblock %}
+     </head>
+     <body>
+	<div id="wrapper{{ wrapper_type }}">
+		<div id="header">
+		{% block header %}
+			<h1><a id="link-title-home" 
+			href="{{ url_for('all') }}">Bravi News</a></h1>
+		{% endblock %}
+		</div>
+		<div id="messages">
+		{% for category, msg in get_flashed_messages(with_categories=true) %}
+		     <p class="messages flash-{{ category }}">{{ msg }}</p>
+		{% endfor %}
+		</div>
+		<div id="content" class="shadow">
+			{% block content %}{% endblock %}
+		</div>
+		<div id="footer">{% block footer %}{% endblock %}</div>
+	</div>
+     </body>
+</html>

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<h2>All News</h2>
+	<ul id="profile-results">
+		{% for n in news %}
+			<li>
+			     <h3>{{ n.title }}</h3>
+			     {{ n.text }}
+			</li>
+		{% endfor %}
+	</ul>
+{% endblock %}
+
+{% block footer %}
+	<a class="bt-action bt-action-edit" href="{{ url_for('create') }}">
+		<span>Create</span>
+	</a>
+{% endblock %}
